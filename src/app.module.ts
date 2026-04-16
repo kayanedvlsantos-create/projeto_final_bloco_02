@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { CategoriaModule } from './categoria/categoria.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Categoria } from './categoria/entities/categoria.entity';
+import { CategoriaModule } from './categoria/categoria.module';
 
 @Module({
   imports: [
@@ -13,14 +12,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'root', //  usuário do banco de dados
       password: 'root', //senha do banco de dados
       database: 'db_farmacia', //nome do banco de dados
-      entities: [], //entidades do banco de dados
+      entities: [Categoria], //entidades do banco de dados
       synchronize: true, //sincroniza o banco de dados com as entidades, deve ser false em produção
     }),
 
     CategoriaModule,
-    
+
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
