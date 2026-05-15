@@ -12,6 +12,10 @@ export class Categoria {
     @Column({ length: 255, nullable: false })
     nome!: string;
 
+    @IsNotEmpty()
+    @Column({ length: 255, nullable: false })
+    descricao!: string;
+
     @OneToMany(() => Produto, (produto) => produto.categoria)
     produtos!: Produto[];
 
